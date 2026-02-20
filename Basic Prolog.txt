@@ -1,0 +1,26 @@
+find_max(X, Y, X) :- X >= Y, !.
+find_max(X, Y, Y) :- X < Y.
+
+find_min(X, Y, X) :- X =< Y, !.
+find_min(X, Y, Y) :- X > Y.
+
+?- find_max(10, 20, M).
+?- find_min(10, 20, M).
+
+
+series(R1, R2, Re) :- Re is R1 + R2.
+parallel(R1, R2, Re) :- Re is ((R1 * R2) / (R1 + R2)).
+
+?- series(10, 20, R).
+
+?- parallel(10, 20, R).
+
+vertical(seg(point(X,_), point(X,_))).
+horizontal(seg(point(_,Y), point(_,Y))).
+oblique(seg(point(X1,Y1), point(X2,Y2))) :- X1 \== X2, Y1 \== Y2.
+
+?- vertical(seg(point(3,4), point(3,10))).
+
+?- horizontal(seg(point(2,5), point(9,5))).
+
+?- oblique(seg(point(1,2), point(3,5))).
